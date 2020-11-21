@@ -30,7 +30,7 @@
 		    <label for="email">Email:</label>
 		    <input type="text" class="form-control" readonly  value="<?php echo $row['email'] ?>">
 		</div>
-		<a href="suagiaoan.php?id=<?php echo $id ?>" type="button" class="btn btn-info">Quản lý giáo án</a>
+		<a href="giaotrinh.php?id=<?php echo $id ?>" type="button" class="btn btn-info">Quản lý giáo trình</a>
 		
 		<a href="suathongtin.php?id=<?php  echo $id ?>" type="button" class="btn btn-info">Sửa thông tin</a>
 		<a href="themdetai.php?id=<?php echo $id ?>" type="button" class="btn btn-info">Thêm đề tài</a>

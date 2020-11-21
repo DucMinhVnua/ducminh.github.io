@@ -1,6 +1,7 @@
 <?php 
 	require 'connect.php';
-	$query = "SELECT * FROM `qlgt`";
+	$id = $_GET['id'];
+	$query = "SELECT * FROM `qlgt` WHERE magv='$id'";
 	$result = mysqli_query($conn, $query);
 
  ?>
@@ -42,10 +43,10 @@
 				while ($row = mysqli_fetch_assoc($result)) {
 					echo "
 					<tr>
-				        <td>$row[magt]</td>
+				        <td>$row[id]</td>
 				        <td>$row[magv]</td>
-				        <td>$row[Ten]</td>
-				        <td><a href='$row[Noidung]'>Tải xuống</a></td>
+				        <td>$row[name]</td>
+				        <td><a href='$row[link]'>Tải xuống</a></td>
 				        
 			   		</tr>
 				";

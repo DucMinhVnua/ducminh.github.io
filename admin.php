@@ -7,11 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css">
-		
-	</style>
 	<title>Quản lý cán bộ</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<style type="text/css">
 
 
@@ -25,7 +23,8 @@
 	</style>
 </head>
 <body>
-		<a style="display:block;margin-bottom:10px;margin-top:10px" href="./add.php">Thêm giảng viên</a>
+		<a href="./add.php"  class="btn btn-info">Thêm giảng viên</a>
+		<a href="qlgt.php" class="btn btn-info">Quản lý giáo trình</a>
 		<br>
 		<table border="1" style="border-spacing: 0">
 			<tr>

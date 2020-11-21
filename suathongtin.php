@@ -11,8 +11,6 @@
   		$id=$_GET['id'];
 		$query = mysqli_query($conn,"SELECT  magv,name,password,addr,email,sdt FROM  user WHERE magv='$id'");
 	    $row = mysqli_fetch_array($query);
-        
-
 	
      ?>
 

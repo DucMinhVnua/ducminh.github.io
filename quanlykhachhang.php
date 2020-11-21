@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-
+	<TBODY></TBODY>
 	<script type="text/javascript">  
       var htmlString=<?php echo $htmlString; ?>;
       alert(htmlString);

@@ -8,7 +8,7 @@
 body {
     min-height: 100vh;
     background-image: linear-gradient(120deg, #3498db, #8e44ad);
-    
+
     .login-form {
         width: 360px;
         background: #f1f1f1;
@@ -62,11 +62,11 @@ body {
         }
     }
 
-    .focus + span::before {
+    .focus+span::before {
         top: -5px;
     }
 
-    .focus + span::after {
+    .focus+span::after {
         width: 100%;
     }
 

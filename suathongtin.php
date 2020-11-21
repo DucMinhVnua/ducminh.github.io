@@ -9,30 +9,28 @@
 <?php 
     	require'connect.php';
   		$id=$_GET['id'];
-		$query = mysqli_query($conn,"SELECT  name,password,addr,email,sdt FROM  user WHERE id='$id'");
+		$query = mysqli_query($conn,"SELECT  magv,name,password,addr,email,sdt FROM  user WHERE magv='$id'");
 	    $row = mysqli_fetch_array($query);
-        
-
 	
      ?>
 
 
 	<form  action="suathongtin.php" method="POST">
  		<div class="form-group">
-		    <label for="email">Họ và tên:</label>
-		    <input type="text" class="form-control"  value="<?php echo $row['name'] ?>">
+		    <label for="mane">Họ và tên:</label>
+		    <input type="text" class="form-control" name="name">  value="<?php echo $row['name'] ?>">
 		</div>
 		<div class="form-group">
-		    <label for="email">Địa chỉ:</label>
-			<input type="text" class="form-control"  value="<?php echo $row['addr'] ?>">
+		    <label for="addr">Địa chỉ:</label>
+			<input type="text" class="form-control" name="addr">  value="<?php echo $row['addr'] ?>">
 		</div>
 		<div class="form-group">
-		    <label for="email">Số điện thoại:</label>
-		    <input type="text" class="form-control"  value="<?php echo $row['sdt'] ?>">
+		    <label for="phone">Số điện thoại:</label>
+		    <input type="text" class="form-control" name="phone">  value="<?php echo $row['phone'] ?>">
 		</div>
 		<div class="form-group">
 		    <label for="email">Email:</label>
-		    <input type="text" class="form-control"   value="<?php echo $row['email'] ?>">
+		    <input type="text" class="form-control" name="email">  value="<?php echo $row['email'] ?>">
 		</div>
 		<a href="suagiaoan.php?id=<?php echo $id ?>" type="button" class="btn btn-info">Lưu</a>
 		

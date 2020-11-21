@@ -18,15 +18,15 @@
     <body>
 	<form  action="user.php">
  		<div class="form-group">
-		    <label for="email">Họ và tên:</label>
+		    <label for="name">Họ và tên:</label>
 		    <input type="text" class="form-control" readonly value="<?php echo $row['name'] ?>">
 		</div>
 		<div class="form-group">
-		    <label for="email">Địa chỉ:</label>
+		    <label for="addr">Địa chỉ:</label>
 			<input type="text" class="form-control" readonly value="<?php echo $row['addr'] ?>">
 		</div>
 		<div class="form-group">
-		    <label for="email">Số điện thoại:</label>
+		    <label for="phone">Số điện thoại:</label>
 		    <input type="text" class="form-control" readonly value="<?php echo $row['phone'] ?>">
 		</div>
 		<div class="form-group">

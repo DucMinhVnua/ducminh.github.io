@@ -1,5 +1,6 @@
 <?php 
     	require'connect.php';
+
   		$id=$_GET['id'];
 		$query = mysqli_query($conn,"SELECT  * FROM  user WHERE magv ='$id'");
 	    $row = mysqli_fetch_array($query);
@@ -14,12 +15,12 @@
 </head>
 <body>
 	<a href="#">Đổi mật khẩu</a>
-	<form  action="xl_suathongtin.php" method="POST">
+	<form  action="xl_suathongtin.php?id=<?php echo $id ?>" method="POST">
  		<div class="form-group">
 		    <label for="email">Họ và tên:</label>
 		    <input name = "name" type="text" class="form-control"  value="<?php echo $row['name'] ?>">
 		</div>
-		<div class="form-group">
+		<div class="form-group">09
 		    <label for="email">Địa chỉ:</label>
 			<input name="addr" type="text" class="form-control"  value="<?php echo $row['addr'] ?>">
 		</div>

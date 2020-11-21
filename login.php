@@ -12,13 +12,18 @@
 <?php 
 		require'connect.php';
 
+		if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+		}
 		if (isset($_POST['submit'])){
-
 			$username = $_POST['username'];
 			$password = $_POST['password'];
-
+			if (!$username || !$password) {
+		        echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
+		        exit;
+		    }
 			//Kiểm tra tên đăng nhập có tồn tại không
-		    $query = mysqli_query($conn,"SELECT magv, username, password,position FROM user WHERE username='$username'");
+		    $query = mysqli_query($conn,"SELECT magv,username, password,position FROM user WHERE username='$username'");
 
 		    if (mysqli_num_rows($query) == 0) {
 		        echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
@@ -27,22 +32,22 @@
 		    //Lấy mật khẩu trong database ra
    			$row = mysqli_fetch_array($query);
    		
-            //So sánh 2 mật khẩu có trùng khớp hay không
+   			
+   			 $_SESSION['username'] = $username;
+
+   			//So sánh 2 mật khẩu có trùng khớp hay không
 		    if ($password != $row['password']) {
 		        echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
 		    exit;
 			
     		}
-
-            // Kiểm tra position
-    		if ($row['position'] == 1) {
+    		else if ($row['position']==1) {
     			# code...
     			header("location:admin.php");
     			die();
     		}
     		else{
     			$id=$row['magv'];
-    			
     			header('location:user.php?id='.$id);
     			die();
     		}
@@ -59,12 +64,12 @@
     <form method="POST" action="login.php" class="login-form">
         <h1>Login</h1>
         <div class="txtb">
-            <input id="input1" type="text" name="username" required="">
+            <input id="input1" type="text" name="username">
             <span data-placeholder="Username"></span>
         </div>
 
         <div class="txtb">
-            <input id="input2" type="password" name="password" required="">
+            <input id="input2" type="password" name="password">
             <span data-placeholder="Password"></span>
         </div>
         <input type="submit" class="logbtn" value="Login" name="submit">
@@ -74,6 +79,10 @@
     </form>
 
     <script src="main.js"></script>
-    
+    <script>
+	function newDoc() {
+  		window.location.assign("https://www.w3schools.com")
+	}
+</script>
 </body>
 </html>

@@ -1,13 +1,5 @@
-
 <?php 
-
-
-$conn = new mysqli("localhost", "root", "", "qlcb");
-		if ($conn->connect_error) {
-			die("Không kết nối :" . $conn->connect_error);
-		    exit();
-		}
-		mysqli_set_charset($conn, "utf8");
+include_once "connect.php";
 
 if (isset($_POST['update_user'])){
 		
@@ -19,7 +11,7 @@ if (isset($_POST['update_user'])){
 		$addr = $_POST['addr'];
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$sql = "UPDATE `user` SET username='$username',password='$password',name='$name',sex='$sex',addr='$addr',sdt='$sdt',email='$email' WHERE id='$id'";
+		$sql = "UPDATE `user` SET username='$username',password='$password',name='$name',sex='$sex',addr='$addr',phone='$sdt',email='$email' WHERE magv='$id'";
 		$edit = mysqli_query($conn, $sql);
 		
 		if ($edit=== TRUE) {

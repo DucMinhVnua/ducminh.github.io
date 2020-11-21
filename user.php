@@ -9,20 +9,17 @@
     <?php 
     	require'connect.php';
   		$id=$_GET['id'];
-		$query = mysqli_query($conn,"SELECT * FROM  user WHERE magv ='$id'");
+		$query = mysqli_query($conn,"SELECT  * FROM  user WHERE magv='$id'");
 		$row = mysqli_fetch_array($query);
-
-
-	
      ?>
     <body>
 	<form  action="user.php">
  		<div class="form-group">
-		    <label for="name">Họ và tên:</label>
+		    <label for="email">Họ và tên:</label>
 		    <input type="text" class="form-control" readonly value="<?php echo $row['name'] ?>">
 		</div>
 		<div class="form-group">
-		    <label for="addr">Địa chỉ:</label>
+		    <label for="email">Địa chỉ:</label>
 			<input type="text" class="form-control" readonly value="<?php echo $row['addr'] ?>">
 		</div>
 		<div class="form-group">

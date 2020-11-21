@@ -2,10 +2,10 @@
 require 'connect.php';
 
 $id = $_GET['id'];
-$query ="SELECT * FROM `user` WHERE id ='$id'";
+$query ="SELECT * FROM `user` WHERE magv ='$id'";
 $result = mysqli_query($conn, $query);
 $row=mysqli_fetch_assoc($result);
- ?>
+?>
 
 <!DOCTYPE html>	
 <html>
@@ -24,7 +24,7 @@ $row=mysqli_fetch_assoc($result);
 	<h2>Sửa thành viên</h2>
 	<a href="admin.php">Trở về</a><br>
 	<br>
-	<label for="id">ID:<input type="text" name="id" readonly value="<?php echo $row['id']; ?>"></label>
+	<label for="id">Mã giảng viên:<input type="text" readonly name="id" value="<?php echo $row['magv']; ?>"></label>
 	<label for="name">Tên cán bộ:</label> <input type="text" value="<?php echo $row['name']; ?>" name='name'><br/>
 	<label>Email: <input type="text" value="<?php echo $row['email']; ?>" name="email"></label><br/>
 	<label>Địa chỉ: <input type="text" value="<?php echo $row['addr']; ?>" name="addr"></label><br/>
@@ -33,7 +33,7 @@ $row=mysqli_fetch_assoc($result);
 	            	<option value="Nam">Nam</option>
     				<option value="Nữ">Nữ</option>
 	            </select><br/>
-	<label>Phone: <input type="text" value="<?php echo $row['sdt']; ?>" name="sdt"></label><br/>
+	<label>Phone: <input type="text" value="<?php echo $row['phone']; ?>" name="sdt"></label><br/>
 	<label>Username: <input type="text" value="<?php echo $row['username']; ?>" name="username"></label><br/>
 	<label>Password: <input type="text" value="<?php echo $row['password']; ?>" name="password"></label><br/>
 

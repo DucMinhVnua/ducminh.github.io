@@ -35,9 +35,9 @@
 		        <th>Địa chỉ</th>
 		        <th>Số điện thoại</th>
 		        <th>Email</th>
-		        <th>username</th>
-		    	<th>password</th>
-		       	<th>Action</th>
+		        <th>Tài khoản</th>
+		    	<th>Mật khẩu</th>
+		       	<th>Chức năng</th>
 		    </tr>
 		    <?php 
 		    	if(mysqli_num_rows($result)>0){

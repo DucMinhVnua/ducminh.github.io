@@ -1,88 +1,95 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" type="text/css" href="./scss/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+    <script language="javascript">
+     
+       
+        function load_ajax()
+        {
+            // URL
+            var url = "result.php";
+             
+            // Data
+            var data = {
+                username : $('#username').val(),
+                password : $('#password').val()
+            };
+             
+            // Success Function
+            var success = function (result){
+                const data = JSON.parse(result);
+                const type = data['type'];
+                if (type === 'admin'){
+                    window.location="http://localhost/git/ducminh.github.io/admin.php";
+                } else if (type === 'user'){
+                    const user = data['data'];
+                    const id = user['magv'];
+                    window.location=`http://localhost/git/ducminh.github.io/user.php?id=${id}`;
+
+                }
+                    else{
+                        const type = data['text'];
+                        $('#result').html(type);
+                    }
+                }
+             
+            // Result Type o
+            var dataType = 'text';
+             
+            // Send Ajax
+            $.post(url, data, success, dataType);
+        }        
+    </script>
 </head>
 
 
-<?php 
-		require'connect.php';
-
-		if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-		}
-		if (isset($_POST['submit'])){
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			if (!$username || !$password) {
-		        echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
-		        exit;
-		    }
-			//Kiểm tra tên đăng nhập có tồn tại không
-		    $query = mysqli_query($conn,"SELECT magv,username, password,position FROM user WHERE username='$username'");
-
-		    if (mysqli_num_rows($query) == 0) {
-		        echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-		        exit;
-		    }	
-		    //Lấy mật khẩu trong database ra
-   			$row = mysqli_fetch_array($query);
-   		
-   			
-   			 $_SESSION['username'] = $username;
-
-   			//So sánh 2 mật khẩu có trùng khớp hay không
-		    if ($password != $row['password']) {
-		        echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-		    exit;
-			
-    		}
-    		else if ($row['position']==1) {
-    			# code...
-    			header("location:admin.php");
-    			die();
-    		}
-    		else{
-    			$id=$row['magv'];
-    			header('location:user.php?id='.$id);
-    			die();
-    		}
-     	
-		}
-        
-        // lấy dữ liệu người dùng
-		
-
- ?>
 
 <body>
 
-    <form method="POST" action="login.php" class="login-form">
+    <form  class="login-form">
         <h1>Login</h1>
         <div class="txtb">
-            <input id="input1" type="text" name="username">
-            <span data-placeholder="Username"></span>
+            <input placeholder="Username" id="username" type="text" >
+           <!--  <span data-placeholder="Username"></span> -->
         </div>
 
         <div class="txtb">
-            <input id="input2" type="password" name="password">
-            <span data-placeholder="Password"></span>
+            <input placeholder="Password"  id="password" type="password" name="">
+            <!-- <span data-placeholder="Password"></span> -->
         </div>
-        <input type="submit" class="logbtn" value="Login" name="submit">
+        <div style="color: red;height: 30px" id="result" class="alert">
+            
+        </div>
+        <input class="logbtn" type="button" name="clickme" id="clickme" onclick="load_ajax()" value="Đăng nhập"/>
         <div class="bottom-text">
             Don't have account? <a href="#">Sign up</a>
         </div>
     </form>
 
-    <script src="main.js"></script>
-    <script>
-	function newDoc() {
-  		window.location.assign("https://www.w3schools.com")
-	}
+   
+
+<script type="text/javascript">
+    var input = document.getElementsByTagName("input");
+    var input_button = document.getElementById("clickme");
+
+
+    for (var i = 0; i < input.length; i++) {
+        input[i].addEventListener("keyup",myFunction);
+        
+        function myFunction(event){
+            
+            if (event.keyCode == '13') {
+                input_button.click();
+            }
+        }
+    }
+
 </script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<a href="#">Đổi mật khẩu</a>
-	<form  action="xl_suathongtin.php" method="POST">
+	<form  action="xl_suathongtin.php?id=<?php echo $id ?>" method="POST">
  		<div class="form-group">
 		    <label for="email">Họ và tên:</label>
 		    <input name = "name" type="text" class="form-control"  value="<?php echo $row['name'] ?>">

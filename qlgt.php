@@ -1,10 +1,10 @@
 <?php 
 	require 'connect.php';
-	$query = "SELECT * FROM `qlgt` ";
-	$result = mysqli_query($conn, $query);
-	
 
- ?>
+	$sql_qlgt = "SELECT * FROM qlgt";
+
+	$query_qlgt = mysqli_query($conn, $sql_qlgt);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -27,25 +27,27 @@
 	</style>
 </head>
 <body>
-			<table class="table " border="1" style="border-spacing: 0">
-			<tr>
-		        <th scope="col">Mã giảng viên</th>
-		        <th scope="col">Tên học phần</th>
-		        <th scope="col">Hành động</th>
-		    </tr>
-		    <?php 
-		    	if(mysqli_num_rows($result)>0){
-				while ($row = mysqli_fetch_assoc($result)) {
+	<table class="table " border="1" style="border-spacing: 0">
+		<tr>
+		    <!-- <th scope="col">Mã giảng viên</th> -->
+		    <th scope="col">Tên giảng viên</th>
+		    <th scope="col">Tên học phần</th>
+		    <th scope="col">Hành động</th>
+		</tr>
+		    <?php
+				while ($row = mysqli_fetch_assoc($query_qlgt)) {
+					$sql = "SELECT * FROM user WHERE magv = '$row[magv]'";
+					$query_user = mysqli_query($conn, $sql);
+					$row_user = mysqli_fetch_assoc($query_user);
 					echo "
-					<tr>
-				        <td>$row[magv]</td>
-				        <td>$row[name]</td>
-				        <td class='flex-tb'> <a title='view' href='view.php?id=$row[id]'><i class='fas fa-eye'></i></a> | <a title='delete' href='delete.php?id=$row[magv]'><i class='fas fa-trash-alt'></i></a></td>
-			   		</tr>
-				";
+						<tr>
+						    <td>$row_user[name]</td>
+						    <td>$row[name]</td>
+						    <td class='flex-tb'> <a title='view' href='view_giaotrinh.php?id=$row[id]'><i class='fas fa-eye'></i></a> | <a title='delete' href='delete_giaotrinh.php?id=$row[id]'><i class='fas fa-trash-alt'></i></a></td>
+					   	</tr>
+					";
 				}
-			}
-		    ?>
+			?>
 		</table>
 	
 </body>

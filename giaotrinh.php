@@ -9,14 +9,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style type="text/css">
-		
-	</style>
 	<title>Quản lý giáo trình</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./scss/fontawesome-free-5.15.1-web/css/all.min.css">
 	<style type="text/css">
-
-
 	*{
 			margin: 0;
 		}
@@ -27,15 +23,14 @@
 	</style>
 </head>
 <body>
-
+		<a href="./themgiaotrinh_user.php?id=<?php echo $id ?>">Thêm giáo trình</a>
 		
 		<br>
 		<table border="1" style="border-spacing: 0">
 			<tr>
-		        <th>ID</th>
-		        <th>Mã gv</th>
+		        
 		        <th>Tên</th>
-		        <th>ND</th>
+		        <th>Chắc năng</th>
 		        
 		    </tr>
 		    <?php 
@@ -43,10 +38,10 @@
 				while ($row = mysqli_fetch_assoc($result)) {
 					echo "
 					<tr>
-				        <td>$row[id]</td>
-				        <td>$row[magv]</td>
+				        
 				        <td>$row[name]</td>
-				        <td><a href='$row[link]'>Tải xuống</a></td>
+				        <td class='flex-tb'> <a title='view' href='view_giaotrinh.php?id=$row[id]'><i class='fas fa-eye'></i></a> | <a title='delete' href='delete_giaotrinh_user.php?id=$row[id]&magv=$row[magv]'><i class='fas fa-trash-alt'></i></a>
+				        </td>
 				        
 			   		</tr>
 				";

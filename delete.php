@@ -3,10 +3,8 @@
 
 	$magv = $_GET['id'];
 	$sql = "DELETE FROM user WHERE magv = '$magv'";
-	echo "$magv";
-	if($conn->query($sql)==TRUE){
-		echo $magv;
+	$query = mysqli_query($conn, $sql);
+	if($query){
 		header("location: admin.php");
-
 	}
 ?>
